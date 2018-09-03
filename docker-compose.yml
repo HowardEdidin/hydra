@@ -17,7 +17,7 @@ services:
   
 
   hydra:
-    image:
+    image: hedidin/hydra:test
       ports:
       # Public port
       - "4444:4444"
