@@ -18,8 +18,8 @@ services:
 
   hydra:
     image: hedidin/hydra:test
-      ports:
-      # Public port
+    ports:
+    # Public port
       - "4444:4444"
       # Admin port
       - "4445:4445"
