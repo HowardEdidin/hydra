@@ -28,13 +28,7 @@ services:
     restart: on-failure
 
   hydra-admin:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    links:
-      - postgresd:postgresd
-#     Uncomment the following line to use mysql instead.
-#      - mysqld:mysqld
+    image: hedidin/hydra:test
     depends_on:
       - hydra-migrate
     ports:
@@ -55,13 +49,7 @@ services:
     restart: unless-stopped
 
   hydra:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    links:
-      - postgresd:postgresd
-#     Uncomment the following line to use mysql instead.
-#      - mysqld:mysqld
+    image: hedidin/hydra:test    
     depends_on:
       - hydra-migrate
     ports:
@@ -84,9 +72,7 @@ services:
   consent:
     environment:
       - HYDRA_URL=http://hydra-admin:4445
-    image: oryd/hydra-login-consent-node:v1.0.0-beta.7
-    links:
-      - hydra-admin
+    image: hedidin/hydra:test   
     ports:
       - "3000:3000"
     restart: unless-stopped
